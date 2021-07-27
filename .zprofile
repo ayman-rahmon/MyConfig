@@ -14,12 +14,13 @@ unsetopt PROMPT_SP
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="qutebrowser"
+export READER="zathura"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
+#export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc" # set this if you wanna change the place of the file ~/.xinitrc
 #export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
@@ -153,4 +154,4 @@ and replace \`libxft\`. Afterwards, you may start the graphical server by runnin
 fi
 
 # Switch escape and caps if tty and no passwd required:
-sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
+sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/yaart/ttymaps.kmap 2>/dev/null
