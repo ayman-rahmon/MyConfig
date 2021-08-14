@@ -1,0 +1,12 @@
+hash -d cac=/home/tatsujin/.cache 
+hash -d cf=/home/tatsujin/.config 
+hash -d D=/home/tatsujin/Downloads 
+hash -d d=/home/tatsujin/Documents 
+hash -d dt=/home/tatsujin/.local/share 
+hash -d h=/home/tatsujin 
+hash -d m=/home/tatsujin/Music 
+hash -d mn=/mnt 
+hash -d pp=/home/tatsujin/Pictures 
+hash -d sc=/home/tatsujin/.local/bin 
+hash -d src=/home/tatsujin/.local/src 
+hash -d vv=/home/tatsujin/Videos 
