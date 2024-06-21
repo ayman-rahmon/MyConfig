@@ -34,13 +34,20 @@ for_window [instance="dropdown_tmuxdd"] border pixel 3
 for_window [instance="dropdown_dropdowncalc"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
-bar {
-	font pango:mono 10
-	status_command i3blocks
-	position top
-	mode dock
-	modifier None
-}
+#bar {
+#	font pango:mono 10
+#	status_command i3blocks
+#	position top
+#	mode dock
+#	modifier None
+#}
+
+
+# polybar ...
+exec_always --no-startup-id killall -q polybar
+exec_always --no-startup-id while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+exec_always --no-startup-id MONITOR=$(polybar --list-monitors | cut -d":" -f1 | head -n 1) polybar example &
+
 
 # #---Basic Bindings---# #
 bindsym $mod+Return 		exec $term
@@ -82,19 +89,20 @@ bindsym $mod+t			split toggle
 bindsym $mod+Shift+t		gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
 
 bindsym $mod+y			exec $term -e calcurse
-bindsym $mod+Shift+y		exec --no-startup-id i3resize left
+bindsym $mod+Shift+y    resize shrink width 10 px or 10 ppt
+
 
 bindsym $mod+u			exec --no-startup-id ddspawn tmuxdd
-bindsym $mod+Shift+u		exec --no-startup-id i3resize down
+bindsym $mod+Shift+u    resize grow height 10 px or 10 ppt
 
 bindsym $mod+i 			exec $term -e gotop
-bindsym $mod+Shift+i		exec --no-startup-id i3resize up
+bindsym $mod+Shift+i    resize shrink height 10 px or 10 ppt
 
 bindsym $mod+o			sticky toggle
-bindsym $mod+Shift+o		exec --no-startup-id i3resize right
+bindsym $mod+Shift+o    resize grow width 10 px or 10 ppt
 
 bindsym $mod+p			exec --no-startup-id mpc toggle
-bindsym $mod+Shift+p		exec --no-startup-id mpc pause
+
 
 bindsym $mod+a			exec --no-startup-id ddspawn dropdowncalc -f mono:pixelsize=24
 bindsym $mod+Shift+a		exec $term -e pulsemixer
@@ -102,7 +110,7 @@ bindsym $mod+Shift+a		exec $term -e pulsemixer
 bindsym $mod+s			gaps inner current plus 5
 bindsym $mod+Shift+s		gaps inner current minus 5
 
-bindsym $mod+d			exec --no-startup-id dmenu_run
+bindsym $mod+d			exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 set $freeze Distraction-free mode (super+shift+f to reactivate bindings)
